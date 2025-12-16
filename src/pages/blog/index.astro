@@ -1,0 +1,18 @@
+---
+import BlogLayout from '@/components/BlogLayout.astro';
+import { getBlogTopics } from '@/lib/topics';
+
+const blogTopics = getBlogTopics();
+---
+
+<BlogLayout title="Blog" subtitle="Read our latest posts">
+  <div class="card-grid">
+    {blogTopics.map((topic) => (
+      <a href={`/blog/${topic.slug}/`} class="card topic-card">
+        <h3>{topic.label}</h3>
+        <p class="topic-description">Browse all {topic.label.toLowerCase()} posts</p>
+      </a>
+    ))}
+  </div>
+</BlogLayout>
+

@@ -1,0 +1,35 @@
+---
+/**
+ * Shared navigation header component
+ * Thin bar (60px), logo left, nav right
+ */
+
+interface Props {
+  siteTitle?: string;
+}
+
+const { siteTitle = 'My Site' } = Astro.props;
+
+const navLinks = [
+  { label: 'Docs', href: '/docs/' },
+  { label: 'Topics', href: '/topics/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Contact', href: '/contact/' },
+];
+---
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="site-title">{siteTitle}</a>
+    <nav>
+      <ul class="site-nav">
+        {navLinks.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+

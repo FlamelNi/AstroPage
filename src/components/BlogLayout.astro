@@ -1,0 +1,40 @@
+---
+/**
+ * Blog page layout with hero section
+ * Used for blog pages, topics page, and contact page
+ */
+import '../styles/site.css';
+import Header from './Header.astro';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  showHero?: boolean;
+  siteTitle?: string;
+}
+
+const { title, subtitle, showHero = true, siteTitle = 'My Site' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | {siteTitle}</title>
+  </head>
+  <body>
+    <Header siteTitle={siteTitle} />
+    {showHero && (
+      <section class="hero">
+        <div class="container">
+          <h1>{title}</h1>
+          {subtitle && <p>{subtitle}</p>}
+        </div>
+      </section>
+    )}
+    <main class="container">
+      <slot />
+    </main>
+  </body>
+</html>

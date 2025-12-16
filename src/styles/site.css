@@ -1,0 +1,277 @@
+/* ==========================================================================
+   CSS Design System
+   Based on design tokens from design.json
+   ========================================================================== */
+
+/* ==========================================================================
+   CSS Custom Properties
+   ========================================================================== */
+
+:root {
+  /* Layout */
+  --container-max-width: 1200px;
+  --header-height: 60px;
+
+  /* Spacing Scale (8px base) */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-2xl: 64px;
+  --spacing-3xl: 80px;
+
+  /* Typography */
+  --font-family: system-ui, -apple-system, sans-serif;
+  --font-size-small: 14px;
+  --font-size-base: 16px;
+  --font-size-large: 18px;
+  --font-size-h3: 20px;
+  --font-size-h2: 24px;
+  --font-size-h1: 36px;
+  --font-size-hero: 48px;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Colors */
+  --color-background: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-text-muted: #9ca3af;
+  --color-accent: #3b82f6;
+
+  /* Borders */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-width: 1px;
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 var(--spacing-sm);
+  line-height: var(--line-height-tight);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-semibold);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+}
+
+p {
+  margin: 0 0 var(--spacing-sm);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Layout Utilities
+   ========================================================================== */
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.hero {
+  text-align: center;
+  padding: var(--spacing-3xl) var(--spacing-md);
+}
+
+.hero h1 {
+  font-size: var(--font-size-hero);
+  margin-bottom: var(--spacing-md);
+}
+
+.hero p {
+  font-size: var(--font-size-large);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+}
+
+/* ==========================================================================
+   Header Styles
+   ========================================================================== */
+
+.site-header {
+  height: var(--header-height);
+  border-bottom: var(--border-width) solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.site-nav {
+  display: flex;
+  gap: var(--spacing-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.site-nav a:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Starlight Overrides
+   ========================================================================== */
+
+:root {
+  /* Starlight color overrides */
+  --sl-color-bg: var(--color-background);
+  --sl-color-bg-nav: var(--color-surface);
+  --sl-color-bg-sidebar: var(--color-surface);
+  --sl-color-text: var(--color-text-primary);
+  --sl-color-text-accent: var(--color-accent);
+  --sl-color-hairline: var(--color-border);
+  --sl-color-hairline-light: var(--color-border);
+  --sl-color-accent: var(--color-accent);
+  --sl-color-accent-low: #dbeafe;
+  --sl-color-accent-high: #1d4ed8;
+
+  /* Starlight layout overrides */
+  --sl-nav-height: var(--header-height);
+  --sl-nav-pad-x: var(--spacing-md);
+  --sl-content-width: var(--container-max-width);
+  --sl-sidebar-width: 280px;
+
+  /* Starlight typography overrides */
+  --sl-font: var(--font-family);
+  --sl-text-base: var(--font-size-base);
+  --sl-text-h1: var(--font-size-h1);
+  --sl-text-h2: var(--font-size-h2);
+  --sl-text-h3: var(--font-size-h3);
+  --sl-line-height: var(--line-height-normal);
+}
+
+/* Starlight header alignment */
+header.header {
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.site-title,
+.site-title a {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-large);
+}
+
+.site-title:hover,
+.site-title a:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+starlight-menu-button + nav a,
+header.header nav a {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+starlight-menu-button + nav a:hover,
+header.header nav a:hover {
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
+   Topic Card Styles
+   ========================================================================== */
+
+.topic-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.topic-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.topic-card h3 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.topic-description {
+  color: var(--color-text-secondary);
+  margin: 0;
+}

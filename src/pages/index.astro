@@ -1,0 +1,23 @@
+---
+/**
+ * Homepage with hero section and navigation cards
+ */
+import BlogLayout from '../components/BlogLayout.astro';
+---
+
+<BlogLayout title="Welcome to My Site" subtitle="Documentation and blog in one place">
+  <div class="card-grid">
+    <a href="/docs/" class="card topic-card">
+      <h3>Documentation</h3>
+      <p class="topic-description">Browse tutorials, guides, and reference documentation to help you get started and learn more.</p>
+    </a>
+    <a href="/blog/" class="card topic-card">
+      <h3>Blog</h3>
+      <p class="topic-description">Read articles about development, daily life, and follow along with project updates.</p>
+    </a>
+    <a href="/topics/" class="card topic-card">
+      <h3>Topics</h3>
+      <p class="topic-description">Explore content organized by topic, from technical tutorials to personal reflections.</p>
+    </a>
+  </div>
+</BlogLayout>

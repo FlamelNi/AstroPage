@@ -1,0 +1,83 @@
+---
+import BlogLayout from '@/components/BlogLayout.astro';
+import { getCollection } from 'astro:content';
+import { getTopicBySlug, getBlogTopics } from '@/lib/topics';
+
+export async function getStaticPaths() {
+  const blogTopics = getBlogTopics();
+  return blogTopics.map((topic) => ({
+    params: { topic: topic.slug },
+  }));
+}
+
+const { topic } = Astro.params;
+const topicData = getTopicBySlug(topic!);
+
+if (!topicData) {
+  return Astro.redirect('/blog/');
+}
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter((post) => post.id.startsWith(`${topic}/`))
+  .filter((post) => post.data.draft !== true)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BlogLayout title={topicData.label} subtitle={`All ${topicData.label.toLowerCase()} posts`}>
+  {posts.length > 0 ? (
+    <div class="card-grid">
+      {posts.map((post) => {
+        const relativeSlug = post.id.split('/').slice(1).join('/').replace(/\.mdx?$/, '');
+        return (
+        <a href={`/blog/${topic}/${relativeSlug}/`} class="card post-card">
+          <time class="post-date">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+          <h3>{post.data.title}</h3>
+          {post.data.description && <p class="post-description">{post.data.description}</p>}
+        </a>
+      );})}
+    </div>
+  ) : (
+    <div class="empty-state">
+      <p>No posts yet in this topic. Check back soon!</p>
+    </div>
+  )}
+</BlogLayout>
+
+<style>
+  .post-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .post-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+  }
+
+  .post-date {
+    display: block;
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .post-card h3 {
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .post-description {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text-secondary);
+  }
+</style>
