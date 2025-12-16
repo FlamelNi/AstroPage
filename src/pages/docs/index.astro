@@ -1,0 +1,17 @@
+---
+import BlogLayout from "@/components/BlogLayout.astro";
+import { getDocTopicsFromCollection } from "@/lib/topics";
+
+const docTopics = await getDocTopicsFromCollection();
+---
+
+<BlogLayout title="Documentation" subtitle="Explore our documentation topics">
+  <div class="card-grid">
+    {docTopics.map((topic) => (
+      <a href={`/docs/${topic.slug}/`} class="card topic-card">
+        <h3>{topic.label}</h3>
+        <p class="topic-description">Browse all {topic.label.toLowerCase()} documentation</p>
+      </a>
+    ))}
+  </div>
+</BlogLayout>
