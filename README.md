@@ -1,4 +1,4 @@
-# My Site
+# AstroPage
 
 A documentation and blog site built with Astro + Starlight.
 
