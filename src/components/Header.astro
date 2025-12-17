@@ -22,16 +22,18 @@ const navLinks = [
 <header class="site-header">
   <div class="container">
     <a href="/" class="site-title">{siteTitle}</a>
-    <nav>
-      <ul class="site-nav">
-        {navLinks.map((link) => (
-          <li>
-            <a href={link.href}>{link.label}</a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-    <ThemeToggle />
+    <div class="header-right">
+      <nav>
+        <ul class="site-nav">
+          {navLinks.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <ThemeToggle />
+    </div>
   </div>
 </header>
 
