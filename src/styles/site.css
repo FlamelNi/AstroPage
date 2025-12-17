@@ -40,7 +40,7 @@
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
 
-  /* Colors */
+  /* Colors - Light Mode (default) */
   --color-background: #f8f9fa;
   --color-surface: #ffffff;
   --color-border: #e5e7eb;
@@ -48,12 +48,30 @@
   --color-text-secondary: #6b7280;
   --color-text-muted: #9ca3af;
   --color-accent: #3b82f6;
+  --color-accent-low: #dbeafe;
+  --color-accent-high: #1d4ed8;
 
   /* Borders */
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
   --border-width: 1px;
+}
+
+/* ==========================================================================
+   Dark Mode Colors
+   ========================================================================== */
+
+[data-theme="dark"] {
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-border: #334155;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-accent: #60a5fa;
+  --color-accent-low: #1e3a5f;
+  --color-accent-high: #93c5fd;
 }
 
 /* ==========================================================================
@@ -202,8 +220,8 @@ a:hover {
   --sl-color-hairline: var(--color-border);
   --sl-color-hairline-light: var(--color-border);
   --sl-color-accent: var(--color-accent);
-  --sl-color-accent-low: #dbeafe;
-  --sl-color-accent-high: #1d4ed8;
+  --sl-color-accent-low: var(--color-accent-low);
+  --sl-color-accent-high: var(--color-accent-high);
 
   /* Starlight layout overrides */
   --sl-nav-height: var(--header-height);

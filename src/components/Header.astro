@@ -1,8 +1,9 @@
 ---
 /**
  * Shared navigation header component
- * Thin bar (60px), logo left, nav right
+ * Thin bar (60px), logo left, nav center, theme toggle right
  */
+import ThemeToggle from './ThemeToggle.astro';
 
 interface Props {
   siteTitle?: string;
@@ -30,6 +31,7 @@ const navLinks = [
         ))}
       </ul>
     </nav>
+    <ThemeToggle />
   </div>
 </header>
 

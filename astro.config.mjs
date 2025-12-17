@@ -14,6 +14,10 @@ export default defineConfig({
         },
       ],
       social: {},
+      components: {
+        Head: './src/components/overrides/Head.astro',
+        SocialIcons: './src/components/overrides/SocialIcons.astro',
+      },
     }),
   ],
 });
